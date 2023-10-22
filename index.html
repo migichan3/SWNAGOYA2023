@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>おんちーず</title>
+    <style>
+        body {
+            font-family: 'Comic Sans MS', cursive, sans-serif; /* 子供受けするフォント */
+            background-color: #FF69B4; /* ピンクの背景色 */
+            text-align: center;
+        }
+
+        h1 {
+            color: white;
+            font-size: 24px; /* フォントサイズを大きくする */
+        }
+
+        #container {
+            background-color: #FFE4E1; /* ミストィローズの色 */
+            width: 450px; /* 全体を少し広くする */
+            margin: 0 auto;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 5px 5px 10px #888888;
+        }
+
+        label {
+            font-weight: bold;
+            color: #FF69B4; /* ホットピンクの色 */
+            font-size: 16px; /* フォントサイズを大きくする */
+        }
+
+        #journeyForm {
+            display: flex; /* 要素を横一列に配置 */
+            flex-direction: column; /* 列方向に要素を配置 */
+        }
+
+        .form-group {
+            display: flex; /* ラベルと入力要素を横一列に配置 */
+            flex-direction: column; /* 列方向に要素を配置 */
+            margin: 5px 0; /* 上下のマージンを5pxに設定 */
+        }
+
+        input[type="text"],
+        select {
+            padding: 8px; /* 横paddingを8pxに設定 */
+            border: 2px solid #FF69B4;
+            border-radius: 5px;
+            font-size: 16px; /* フォントサイズを大きくする */
+            flex: 1; /* ラベルと入力要素の横幅を均等に分配 */
+        }
+
+        textarea {
+            padding: 8px; /* 横paddingを8pxに設定 */
+            border: 2px solid #FF69B4;
+            border-radius: 5px;
+            height: 45px; /* selectと同じ長さに調整 */
+            font-size: 16px; /* フォントサイズを大きくする */
+            flex: 1; /* ラベルと入力要素の横幅を均等に分配 */
+        }
+
+        button {
+            background-color: #FF69B4;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            margin-top: 20px;
+            cursor: pointer;
+            font-size: 16px; /* フォントサイズを大きくする */
+        }
+
+        button:hover {
+            background-color: #FF1493; /* ディープピンクの色 */
+        }
+    </style>
+</head>
+<body>
+    <h1>おんちーず</h1>
+    <div id="container">
+        <form id="journeyForm">
+            <div class="form-group">
+                <label for="currentLocation">いまここにいる</label>
+                <input type="text" id="currentLocation" name="currentLocation">
+            </div>
+            <div class="form-group">
+                <label for="destination">ここまでいく</label>
+                <input type="text" id="destination" name="destination">
+            </div>
+            <div class="form-group">
+                <label for="difficulty">ようちえん？しょうがくせい？</label>
+                <select id="difficulty" name="difficulty">
+                    <option value="幼稚園">ようちえん</option>
+                    <option value="小学生">しょうがくせい</option>
+                </select>
+            </div>
+            <button type="submit">しゅっぱつ</button>
+        </form>
+    </div>
+
+    <script>
+        const journeyForm = document.getElementById('journeyForm');
+
+        journeyForm.addEventListener('submit', function (e) {
+            e.preventDefault();
+            const selectedDifficulty = journeyForm.elements['difficulty'].value;
+            if (selectedDifficulty === '幼稚園') {
+                window.location.href = 'map_youtien.html';
+            } else if (selectedDifficulty === '小学生') {
+                window.location.href = 'map_syougakusei.html';
+            }
+        });
+    </script>
+</body>
+</html>
