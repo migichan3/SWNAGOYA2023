@@ -14,10 +14,48 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
+            cursor: pointer; /* カーソルをポインタに変更 */
+        }
+
+        /* 拡大表示用のスタイル */
+        #enlarged {
+            display: none; /* 最初は非表示 */
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7); /* 半透明の背景 */
+        }
+
+        #enlarged img {
+            display: block;
+            margin: auto;
+            max-width: 80%;
+            max-height: 80%;
+            cursor: pointer; /* カーソルをポインタに変更 */
         }
     </style>
 </head>
 <body>
-    <img src="map_syougakusei.png" alt="小学生向け地図">
+    <img src="map_syougakusei.png" alt="小学生向け地図" id="originalImage">
+    <div id="enlarged">
+        <img src="map_syougakusei_kakudai.png" alt="小学生向け地図" id="enlargedImage">
+    </div>
+
+    <script>
+        const originalImage = document.getElementById('originalImage');
+        const enlargedImage = document.getElementById('enlargedImage');
+        const enlargedDiv = document.getElementById('enlarged');
+
+        // クリック時の処理
+        originalImage.addEventListener('click', function() {
+            enlargedDiv.style.display = 'block'; // 拡大表示を表示
+        });
+
+        enlargedDiv.addEventListener('click', function() {
+            enlargedDiv.style.display = 'none'; // 拡大表示を非表示
+        });
+    </script>
 </body>
 </html>
